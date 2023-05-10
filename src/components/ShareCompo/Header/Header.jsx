@@ -35,7 +35,8 @@ const Header = () => {
                 <div className='flex gap-6 items-center'>
                     <FaShoppingBag className='text-lg cursor-pointer'/>
                     <FaSearch className='text-lg cursor-pointer'/>
-                    <button className='px-4 py-2 text-red-600 font-semibold border-2 border-red-600'>Appoinment</button>
+                    <button className='px-4 py-2 text-[#ff3811] font-semibold border-[1px] border-[#ff3811] hover:bg-[#ff3811] hover:text-white'>Appoinment</button>
+                    <Link to={'/logreg/login'} className='px-4 py-2 text-[#ff3811] font-semibold border-[1px] border-[#ff3811] hover:bg-[#ff3811] hover:text-white'>Login</Link>
                 </div>
             </div>
         </div>
