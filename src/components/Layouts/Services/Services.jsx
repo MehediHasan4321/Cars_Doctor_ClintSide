@@ -16,9 +16,14 @@ const Services = () => {
             </div>
             <div className='grid grid-cols-3 gap-6 mt-24 md:px-12'>
                 {
-                    services.map(service=><ServiceCart key={service._id} service={service}/>)
+                    services.map(service=><div className='mx-auto'><ServiceCart key={service._id} service={service}/></div>)
                 }
             </div>
+            {
+                services.length > 6 && <div className='flex justify-center mt-8'>
+                <button className='border-[1px] border-[#ff3811] px-5 py-3 font-semibold text-ld text-[#ff3811] rounded-md '>More Services</button>
+            </div>
+            }
         </div>
     );
 };
