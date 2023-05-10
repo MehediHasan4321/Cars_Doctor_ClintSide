@@ -3,13 +3,13 @@ import loginSvg from '../../../assets/images/login/login.svg'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider';
-import {getAuth, updateProfile} from 'firebase/auth'
+import { getAuth, updateProfile } from 'firebase/auth'
 import app from '../../../Firebase/firebase.config';
 const Regeister = () => {
-    const [error,setError] = useState('')
-    const {signInWithEmail,singInWithGoogle} = useContext(AutnContextProvider)
+    const [error, setError] = useState('')
+    const { signInWithEmail, singInWithGoogle } = useContext(AutnContextProvider)
     const auth = getAuth(app)
-    setTimeout(()=> setError(''),7000)
+    setTimeout(() => setError(''), 7000)
     const regeister = event => {
         event.preventDefault()
         const form = event.target;
@@ -17,23 +17,27 @@ const Regeister = () => {
         const email = form.email.value;
         const password = form.password.value
         const imgUrl = form.url.value
-        signInWithEmail(email,password)
-        .then(()=>{
-            alert('You Are sing in success fully')
-            form.reset()
-            updateProfile(auth.currentUser,{
-                displayName:name,photoURL:imgUrl
+        signInWithEmail(email, password)
+            .then(() => {
+                alert('You Are sing in success fully')
+                form.reset()
+                updateProfile(auth.currentUser, {
+                    displayName: name, photoURL: imgUrl
+                })
+                    .then(() => {
+
+                    })
+                    .catch(err => setError(err.message))
             })
-            .then(()=>{
+            .catch(err => {
+                setError(err.message)
 
             })
-            .catch(err=>setError(err.message))
-    })
-        .catch(err=>{
-            setError(err.message)
-            
-        })
-        
+    }
+    const hadleGoogleLogin = e=>{
+        singInWithGoogle()
+        .then(()=>{alert('login with google is successfull')})
+        .catch(err=>setError(err.message))
     }
     return (
         <div className='container mx-auto my-20 flex justify-center items-center gap-10'>
@@ -65,14 +69,14 @@ const Regeister = () => {
                         </label>
                         <input type="url" placeholder="Set Your Profile Pic URL" name='url' className="input input-bordered" />
                     </div>
-                    {error&&<small className='text-[#ff3811] text-center mt-2'>{error}</small>}
+                    {error && <small className='text-[#ff3811] text-center mt-2'>{error}</small>}
                     <div className="form-control pt-2">
                         <input type="submit" value="Create Account" className='input bg-[#ff3811] text-white' />
                     </div>
                     <div>
                         <p className='text-sm text-gray-600 text-center'>Or Sign In With</p>
                         <div className='flex gap-4 justify-center mt-4 text-3xl text-[#ff3811]'>
-                            <FaGoogle title='login with google' className=' cursor-pointer' />
+                        <FaGoogle onClick={hadleGoogleLogin} title='login with google' className=' cursor-pointer' />
                             <FaGithub title='login with Github' className=' cursor-pointer' />
                             <FaFacebook title='login with Facebook' className=' cursor-pointer' />
                         </div>

@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch, FaShoppingBag } from 'react-icons/fa'
+import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider'
 const Header = () => {
+    const { currentUser, logOut } = useContext(AutnContextProvider)
+    const [visibility,setVisibility] = useState('none')
+    const { displayName, photoURL,email } = currentUser ? currentUser : {}
+    const handleLogOut = () => {
+        logOut()
+        setVisibility('none')
+    }
+    const isShow = value=>{
+        if(value==='none'){
+            setVisibility('block')
+        }else if(value==='block'){
+            setVisibility('none')
+        }
+    }
+    
     return (
         <div className='bg-white h-32 w-full'>
             <div className='container mx-auto flex justify-between items-center h-full'>
@@ -30,13 +46,24 @@ const Header = () => {
                     <Link>Services</Link>
                     <Link>Blog</Link>
                     <Link>Contact</Link>
-                    
+
                 </div>
-                <div className='flex gap-6 items-center'>
-                    <FaShoppingBag className='text-lg cursor-pointer'/>
-                    <FaSearch className='text-lg cursor-pointer'/>
+                <div className='flex gap-6 items-center relative'>
+                    <FaShoppingBag className='text-lg cursor-pointer' />
+                    <FaSearch className='text-lg cursor-pointer' />
                     <button className='px-4 py-2 text-[#ff3811] font-semibold border-[1px] border-[#ff3811] hover:bg-[#ff3811] hover:text-white'>Appoinment</button>
-                    <Link to={'/logreg/login'} className='px-4 py-2 text-[#ff3811] font-semibold border-[1px] border-[#ff3811] hover:bg-[#ff3811] hover:text-white'>Login</Link>
+                    {
+                        currentUser ? photoURL ? <img onClick={()=>isShow(visibility)} className='w-12 h-12 border-[1px] border-[#ff3811] rounded-full cursor-pointer' src={photoURL} alt="" /> : <h1 onClick={()=>isShow(visibility)} className='text-center text-4xl px-2 py-1 border-[1px] border-[#ff3811] rounded-full cursor-pointer'>{displayName? displayName.slice(0, 1):'*'}</h1> : <Link to={'/logreg/login'} className='px-4 py-2 text-[#ff3811] font-semibold border-[1px] border-[#ff3811] hover:bg-[#ff3811] hover:text-white'>Login</Link>
+                    }
+                    <div className='w-80 h-96 border-2 absolute right-0 top-24' style={{display:`${visibility}`}}>
+                        <div className='flex flex-col items-center mt-4 w-full h-full'>
+                            <img className='w-24 h-24 rounded-full border-[1px] border-[#ff3811]' src={photoURL} alt="user img" />
+                            <h1 className='text-xl font-semibold my-4'>{displayName}</h1>
+                            <h4>{email}</h4>
+                        </div>
+                        <button onClick={handleLogOut} className='px-8 py-2 text-[#ff3811] font-semibold border-[1px] border-[#ff3811] hover:bg-[#ff3811] hover:text-white bottom-3 absolute left-24'>LogOut</button>
+                        
+                    </div>
                 </div>
             </div>
         </div>
