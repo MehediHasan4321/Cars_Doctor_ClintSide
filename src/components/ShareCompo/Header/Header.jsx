@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaSearch, FaShoppingBag } from 'react-icons/fa'
 import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider'
 const Header = () => {
@@ -42,7 +42,8 @@ const Header = () => {
                 <div className='font-semibold flex gap-6'>
                     <Link to={'/'}>Home</Link>
                     <Link>About</Link>
-                    <Link>Services</Link>
+                    <Link to={'/services'}>Services</Link>
+                    {currentUser&&<NavLink to={`/myOrders`}>My Orders</NavLink>}
                     <Link>Blog</Link>
                     <Link>Contact</Link>
 

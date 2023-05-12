@@ -6,6 +6,9 @@ import Regeister from '../components/LogReg/Regeister/Regeister';
 import Login from '../components/LogReg/Login/Login';
 import LogReg from '../components/LogReg/LogReg';
 import CheckOut from '../components/Layouts/CheckOut/CheckOut';
+import Orders from '../components/Layouts/Orders/Orders';
+import PrivetRoute from './PrivetRoute';
+import Services from '../components/Layouts/Services/Services';
 
 const Routes = createBrowserRouter([
     {
@@ -18,8 +21,16 @@ const Routes = createBrowserRouter([
             },
             {
                 path:'/checkout/:id',
-                element:<CheckOut/>,
+                element:<PrivetRoute><CheckOut/></PrivetRoute>,
                 loader:({params})=>fetch(`http://localhost:8000/services/${params.id}`)
+            },
+            {
+                path:'/myOrders',
+                element:<PrivetRoute><Orders/></PrivetRoute>
+            },
+            {
+                path:'/services',
+                element:<Services/>
             }
         ],
         
