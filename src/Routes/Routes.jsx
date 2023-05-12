@@ -9,6 +9,9 @@ import CheckOut from '../components/Layouts/CheckOut/CheckOut';
 import Orders from '../components/Layouts/Orders/Orders';
 import PrivetRoute from './PrivetRoute';
 import Services from '../components/Layouts/Services/Services';
+import Admin from '../components/Admin/Admin';
+import AdminProducts from '../components/Admin/Pages/AdminProducts/AdminProducts';
+import AdminServices from '../components/Admin/Pages/AdminServices/AdminServices';
 
 const Routes = createBrowserRouter([
     {
@@ -46,6 +49,20 @@ const Routes = createBrowserRouter([
             {
                 path:'/logreg/regeister',
                 element:<Regeister/>
+            }
+        ]
+    },
+    {
+        path:'/admin',
+        element:<Admin/>,
+        children:[
+            {
+                path:'/admin/adminServices',
+                element:<AdminServices/>
+            },
+            {
+                path:'/admin/adminProducts',
+                element:<AdminProducts/>
             }
         ]
     }
