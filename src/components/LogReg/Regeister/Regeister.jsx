@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider';
 import { getAuth, updateProfile } from 'firebase/auth'
 import app from '../../../Firebase/firebase.config';
+import useTitle from '../../../customHook/useTitle';
 const Regeister = () => {
     const [error, setError] = useState('')
     const { signInWithEmail, singInWithGoogle } = useContext(AutnContextProvider)
     const auth = getAuth(app)
+    useTitle('regeister')
     setTimeout(() => setError(''), 7000)
     const regeister = event => {
         event.preventDefault()

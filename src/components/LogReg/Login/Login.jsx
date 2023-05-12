@@ -1,14 +1,19 @@
 import React, { useContext, useState } from 'react';
 import loginSvg from '../../../assets/images/login/login.svg'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider';
+import useTitle from '../../../customHook/useTitle';
+
+
 const Login = () => {
     const [error, setError] = useState('')
-    const { singUpWithEmail } = useContext(AutnContextProvider)
+    const { singUpWithEmail,singInWithGoogle } = useContext(AutnContextProvider)
+    const navigate = useNavigate()
     setTimeout(() => {
         setError('')
     }, 7000);
+    useTitle('login')
     const login = event => {
 
         event.preventDefault()
@@ -21,6 +26,13 @@ const Login = () => {
                 form.reset()
             })
             .catch(err => { setError(err.message) })
+    }
+    const handleGoogleLogin = ()=>{
+        singInWithGoogle()
+        .then(()=>{
+            navigate('/')
+        })
+        .catch(err=>setError(err.message))
     }
     return (
         <div className='container mx-auto my-20 flex justify-center items-center gap-10'>
@@ -47,7 +59,7 @@ const Login = () => {
                     <div>
                         <p className='text-sm text-gray-600 text-center'>Or Login With</p>
                         <div className='flex gap-4 justify-center mt-4 text-3xl text-[#ff3811]'>
-                            <FaGoogle title='login with google' className=' cursor-pointer' />
+                            <FaGoogle onClick={handleGoogleLogin} title='login with google' className=' cursor-pointer' />
                             <FaGithub title='login with Github' className=' cursor-pointer' />
                             <FaFacebook title='login with Facebook' className=' cursor-pointer' />
                         </div>

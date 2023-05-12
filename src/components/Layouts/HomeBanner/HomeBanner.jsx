@@ -6,7 +6,7 @@ import Banner from './Banner/Banner';
 const HomeBanner = () => {
     const [banners, setBanners] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8000/banners').then(res => res.json()).then(data => setBanners(data))
+        fetch('http://localhost:8000/bannerContent').then(res => res.json()).then(data => setBanners(data))
     }, [])
     const settings = {
         dots: true,
@@ -23,7 +23,7 @@ const HomeBanner = () => {
 
         <Slider {...settings}>
             {
-                banners.map(banner => <Banner key={banner.id} banner={banner} />)
+                banners.map(banner => <Banner key={banner._id} banner={banner} />)
             }
         </Slider>
 
