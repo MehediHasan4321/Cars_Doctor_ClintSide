@@ -46,7 +46,8 @@ const Orders = () => {
     }
     return (
         <div className="overflow-x-auto w-full container mx-auto min-h-[70vh]">
-            <table className='table w-full'>
+            {
+                orders.length>0? <table className='table w-full'>
                 <thead>
                     <tr>
                         <th>Delete</th>
@@ -62,10 +63,11 @@ const Orders = () => {
                 </thead>
                 <tbody>
                     {
-                        orders.map(order => <OrderTable key={order._id} order={order} deleteItem={deleteItem} />)
+                       orders.map(order => <OrderTable key={order._id} order={order} deleteItem={deleteItem} />) 
                     }
                 </tbody>
-            </table>
+            </table>:<h1 className='text-4xl font-semibold text-gray-600 text-center mt-24'>{currentUser?.displayName ? currentUser?.displayName :'You'} Have No Order</h1>
+            }
         </div>
     );
 };
