@@ -12,6 +12,8 @@ import Services from '../components/Layouts/Services/Services';
 import Admin from '../components/Admin/Admin';
 import AdminProducts from '../components/Admin/Pages/AdminProducts/AdminProducts';
 import AdminServices from '../components/Admin/Pages/AdminServices/AdminServices';
+import ServiceOrders from '../components/Admin/Pages/ServiceOrders/ServiceOrders';
+import ProductOrders from '../components/Admin/Pages/ProductOrders/ProductOrders';
 
 const Routes = createBrowserRouter([
     {
@@ -63,6 +65,14 @@ const Routes = createBrowserRouter([
             {
                 path:'/admin/adminProducts',
                 element:<AdminProducts/>
+            },
+            {
+                path:'/admin/serviceOrders',
+                element:<ServiceOrders/>
+            },
+            {
+                path:'/admin/productOrders',
+                element:<ProductOrders/>
             }
         ]
     }
