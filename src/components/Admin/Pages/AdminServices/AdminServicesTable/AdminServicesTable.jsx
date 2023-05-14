@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AdminServicesTable = ({service}) => {
-    console.log(service)
+   
     const {title,img,price,service_id} = service
     return (
         <tr>

@@ -36,7 +36,8 @@ const AuthPrivider = ({ children }) => {
         logOut,
         singInWithGoogle,
         singUpWithEmail,
-        isLoading
+        isLoading,
+        setIsLoading
     }
     return (
         <AutnContextProvider.Provider value={userInfo}>

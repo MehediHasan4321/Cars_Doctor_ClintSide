@@ -10,7 +10,7 @@ const AdminProducts = () => {
     const [addedProduct, setAddedProduct] = useState('')
     const { img_url, rating, price, name, _id } = update
     useEffect(() => {
-        fetch('http://https://car-doctor-server-side-beta.vercel.app/products')
+        fetch('https://car-doctor-server-side-beta.vercel.app/products')
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
@@ -50,7 +50,7 @@ const AdminProducts = () => {
             confirmButtonText: 'Yes, Added it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch('http://https://car-doctor-server-side-beta.vercel.app/products', {
+                fetch('https://car-doctor-server-side-beta.vercel.app/products', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(addedProduct)
@@ -83,7 +83,7 @@ const AdminProducts = () => {
             confirmButtonText: 'Yes, Update it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://https://car-doctor-server-side-beta.vercel.app/products/${id}`, {
+                fetch(`https://car-doctor-server-side-beta.vercel.app/products/${id}`, {
                     method: 'PUT',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(preview)
@@ -114,7 +114,7 @@ const AdminProducts = () => {
             confirmButtonText: 'Yes, Delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://https://car-doctor-server-side-beta.vercel.app/products/${id}`, {
+                fetch(`https://car-doctor-server-side-beta.vercel.app/products/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
