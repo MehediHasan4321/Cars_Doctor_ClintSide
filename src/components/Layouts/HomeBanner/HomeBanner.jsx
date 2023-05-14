@@ -6,7 +6,7 @@ import Banner from './Banner/Banner';
 const HomeBanner = () => {
     const [banners, setBanners] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8000/bannerContent').then(res => res.json()).then(data => setBanners(data))
+        fetch('http://https://car-doctor-server-side-beta.vercel.app/bannerContent').then(res => res.json()).then(data => setBanners(data))
     }, [])
     const settings = {
         dots: true,

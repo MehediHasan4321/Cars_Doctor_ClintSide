@@ -4,7 +4,7 @@ import AdminServicesTable from './AdminServicesTable/AdminServicesTable';
 const AdminServices = () => {
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch('http://localhost:8000/services')
+        fetch('http://https://car-doctor-server-side-beta.vercel.app/services')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

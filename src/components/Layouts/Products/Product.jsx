@@ -4,7 +4,7 @@ import ProductCart from './ProductCart';
 const Product = () => {
     const [products,setProducts] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:8000/products')
+        fetch('http://https://car-doctor-server-side-beta.vercel.app/products')
         .then(res=>res.json())
         .then(data=>{
             setProducts(data)

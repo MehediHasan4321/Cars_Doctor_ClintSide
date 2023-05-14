@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import loginSvg from '../../../assets/images/login/login.svg'
 import { FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider';
 import useTitle from '../../../customHook/useTitle';
 
@@ -10,6 +10,8 @@ const Login = () => {
     const [error, setError] = useState('')
     const { singUpWithEmail,singInWithGoogle } = useContext(AutnContextProvider)
     const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state?.from?.pathname || '/'
     setTimeout(() => {
         setError('')
     }, 7000);
@@ -24,13 +26,14 @@ const Login = () => {
             .then(() => {
                 alert('logIn Succssfull')
                 form.reset()
+                navigate(from)
             })
             .catch(err => { setError(err.message) })
     }
     const handleGoogleLogin = ()=>{
         singInWithGoogle()
         .then(()=>{
-            navigate('/')
+            navigate(from)
         })
         .catch(err=>setError(err.message))
     }

@@ -1,6 +1,6 @@
 import Rating from '../../../ShareCompo/Rating/Rating';
 
-const AdminProductsTable = ({ product,updateProduct,modalOpen }) => {
+const AdminProductsTable = ({ product,updateProduct,modalOpen,deleteProduct }) => {
     const { img_url, name, price, rating,_id } = product
     return (
         <>
@@ -25,7 +25,7 @@ const AdminProductsTable = ({ product,updateProduct,modalOpen }) => {
                 <label onClick={()=>updateProduct(_id)} htmlFor={modalOpen} className="px-4 py-1 bg-[#ff3811] text-white font-semibold">Update</label>
                 </th>
                 <th>
-                    <button className="px-4 py-1 bg-[#ff3811] text-white font-semibold">Delete</button>
+                    <button onClick={()=>deleteProduct(_id)} className="px-4 py-1 bg-[#ff3811] text-white font-semibold">Delete</button>
                 </th>
 
                 {/* Put this part before </body> tag */}

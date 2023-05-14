@@ -20,7 +20,7 @@ const CheckOut = () => {
         const email = form.email.value
         const order = { customerName: name, orderDate: date, serviceName, orderId:_id, phoneNumber, customerEmail: email, orderPrice: price,img }
 
-        fetch('http://localhost:8000/orders', {
+        fetch('http://https://car-doctor-server-side-beta.vercel.app/orders', {
             method:'POST',
             headers:{
                 'content-type':'application/json'

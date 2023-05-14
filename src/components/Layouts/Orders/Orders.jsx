@@ -7,7 +7,7 @@ const Orders = () => {
     const { currentUser } = useContext(AutnContextProvider)
     const [orders, setOrders] = useState([])
     useEffect(() => {
-        fetch(`http://localhost:8000/orders?email=${currentUser?.email}`)
+        fetch(`http://https://car-doctor-server-side-beta.vercel.app/orders?email=${currentUser?.email}`)
             .then(res => res.json())
             .then(data => setOrders(data))
     }, [])
@@ -23,7 +23,7 @@ const Orders = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:8000/orders/${id}`, {
+                fetch(`http://https://car-doctor-server-side-beta.vercel.app/orders/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
