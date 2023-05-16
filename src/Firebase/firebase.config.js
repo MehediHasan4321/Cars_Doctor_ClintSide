@@ -4,8 +4,9 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCRcYVUed7w_n0Ynxl7PWFhySmPASTcXM4",
+  apiKey: 'AIzaSyCRcYVUed7w_n0Ynxl7PWFhySmPASTcXM4',
   authDomain: "car-doctor-a2bb2.firebaseapp.com",
   projectId: "car-doctor-a2bb2",
   storageBucket: "car-doctor-a2bb2.appspot.com",
