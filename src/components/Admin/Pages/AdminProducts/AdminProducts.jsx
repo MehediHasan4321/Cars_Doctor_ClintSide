@@ -57,7 +57,7 @@ const AdminProducts = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+
                         if (data.insertedId)
                             setAddedProduct('')
                         Swal.fire(
@@ -66,8 +66,6 @@ const AdminProducts = () => {
                             'success'
                         )
                     })
-
-
             }
         })
     }
