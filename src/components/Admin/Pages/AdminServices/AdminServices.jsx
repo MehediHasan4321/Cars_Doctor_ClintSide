@@ -79,7 +79,7 @@ const AdminServices = () => {
 
     }
     const updateService = (id) => {
-   
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You want to update this!",
@@ -122,11 +122,20 @@ const AdminServices = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
+                fetch(`https://car-doctor-server-side-beta.vercel.app/services/${id}`, {
+                    method: "DELETE"
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+
             }
         })
     }
@@ -159,7 +168,7 @@ const AdminServices = () => {
                         <tbody>
 
                             {
-                                services.map(service => <AdminServicesTable key={service._id} service={service} isLoading={isLoading} modalOpen={'modalOpen'} findupdateService={findupdateService} />)
+                                services.map(service => <AdminServicesTable key={service._id} service={service} isLoading={isLoading} modalOpen={'modalOpen'} findupdateService={findupdateService} deleteService={deleteService} />)
                             }
                         </tbody>
 

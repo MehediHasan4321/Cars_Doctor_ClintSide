@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import ServiceCart from './ServiceCart';
 import { AutnContextProvider } from '../../../AuthProvider/AuthPrivider';
 import Loading from '../../ShareCompo/Loading/Loading';
+import { Link } from 'react-router-dom';
 
 const Services = () => {
     const [services,setServices] = useState([])
@@ -29,7 +30,7 @@ const Services = () => {
                 </div>
                 {
                     services.length > 6 && <div className='flex justify-center mt-8'>
-                    <button className='border-[1px] border-[#ff3811] px-5 py-3 font-semibold text-ld text-[#ff3811] rounded-md '>More Services</button>
+                    <Link to={'/services'} className='border-[1px] border-[#ff3811] px-5 py-3 font-semibold text-ld text-[#ff3811] rounded-md '>More Services</Link>
                 </div>
                 }
             </div>

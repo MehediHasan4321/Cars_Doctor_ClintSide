@@ -17,8 +17,9 @@ const CheckOut = () => {
         const price = form.price.value;
         const phoneNumber = form.phoneNumber.value;
         const serviceName= form.serviceName.value;
-        const email = form.email.value
-        const order = { customerName: name, orderDate: date, serviceName, orderId:_id, phoneNumber, customerEmail: email, orderPrice: price,img }
+        const email = form.email.value;
+        const status = false
+        const order = { customerName: name, orderDate: date, serviceName, orderId:_id, phoneNumber, customerEmail: email, orderPrice: price,img,status }
 
         fetch('https://car-doctor-server-side-beta.vercel.app/orders', {
             method:'POST',

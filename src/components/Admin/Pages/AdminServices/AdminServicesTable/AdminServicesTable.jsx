@@ -1,6 +1,6 @@
 import React from 'react';
 
-const AdminServicesTable = ({service,modalOpen,findupdateService}) => {
+const AdminServicesTable = ({service,modalOpen,findupdateService,deleteService}) => {
    
     const {title,img,price,_id} = service
     return (
@@ -25,7 +25,7 @@ const AdminServicesTable = ({service,modalOpen,findupdateService}) => {
                 <label onClick={()=>findupdateService(_id)} htmlFor={modalOpen} className="px-4 py-1 bg-[#ff3811] text-white font-semibold">update</label>
             </th>
             <th>
-                <button className="px-4 py-1 bg-[#ff3811] text-white font-semibold">Delete</button>
+                <button onClick={()=>deleteService(_id)} className="px-4 py-1 bg-[#ff3811] text-white font-semibold">Delete</button>
             </th>
         </tr>
     );

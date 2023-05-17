@@ -1,5 +1,5 @@
 const OrderTable = ({ order,deleteItem }) => {
-    const { img, orderId, orderDate, serviceName, orderPrice,_id } = order
+    const { img, orderId, orderDate, serviceName, orderPrice,_id,status } = order
     return (
         <tr>
             <th>
@@ -31,7 +31,9 @@ const OrderTable = ({ order,deleteItem }) => {
             </td>
             <td>{orderDate}</td>
             <th>
-                <button className="bg-[#ff3811] text-white px-4 py-1 rounded-md">Painding</button>
+                {
+                    status ? <button className="bg-green-400 text-white px-4 py-1 rounded-md">Order Confirm</button> : <button className="bg-[#ff3811] text-white px-4 py-1 rounded-md">Painding</button>
+                }
             </th>
         </tr>
     );
