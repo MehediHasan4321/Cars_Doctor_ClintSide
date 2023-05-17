@@ -122,7 +122,7 @@ const AdminServices = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://car-doctor-server-side-beta.vercel.app/services/${id}`, {
+                fetch(`https://car-doctor-server-side-beta.vercel.app/sereviceOrders/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
