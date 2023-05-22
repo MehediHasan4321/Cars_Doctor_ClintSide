@@ -8,7 +8,12 @@ const Orders = () => {
     const [orders, setOrders] = useState([])
     useEffect(() => {
         
-        fetch(`https://car-doctor-server-side-beta.vercel.app/orders?email=${currentUser?.email}`)
+        fetch(`https://car-doctor-server-side-beta.vercel.app/orders?email=${currentUser?.email}`,{
+            method:'GET',
+            headers:{
+                authorization:`beaer ${localStorage.getItem('car-access-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setOrders(data))
             

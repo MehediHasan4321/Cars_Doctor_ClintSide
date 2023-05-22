@@ -8,7 +8,7 @@ import useTitle from '../../../customHook/useTitle';
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { singUpWithEmail,singInWithGoogle } = useContext(AutnContextProvider)
+    const { singUpWithEmail, singInWithGoogle } = useContext(AutnContextProvider)
     const navigate = useNavigate()
     const location = useLocation()
     const from = location?.state?.from?.pathname || '/'
@@ -23,19 +23,47 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value
         singUpWithEmail(email, password)
-            .then(() => {
+            .then(result => {
                 alert('logIn Succssfull')
+                const user = result.user
+                const logedUser = {
+                    email: user.email
+                }
+                fetch('https://car-doctor-server-side-beta.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(logedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        localStorage.setItem('car-access-token', data.token)
+                    })
                 form.reset()
-                navigate(from)
+                navigate(from, { replace: true })
             })
             .catch(err => { setError(err.message) })
     }
-    const handleGoogleLogin = ()=>{
+    const handleGoogleLogin = () => {
         singInWithGoogle()
-        .then(()=>{
-            navigate(from)
-        })
-        .catch(err=>setError(err.message))
+            .then(() => {
+                fetch('https://car-doctor-server-side-beta.vercel.app/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(logedUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        localStorage.setItem('car-access-token', data.token)
+                    })
+                navigate(from,{replace:true})
+            })
+            .catch(err => setError(err.message))
     }
     return (
         <div className='container mx-auto my-20 flex justify-center items-center gap-10'>

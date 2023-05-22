@@ -9,6 +9,7 @@ const Header = () => {
     const handleLogOut = () => {
         logOut()
         setVisibility('none')
+        localStorage.removeItem('car-access-token')
     }
     const isShow = value => {
         if (value === 'none') {

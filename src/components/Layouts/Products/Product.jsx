@@ -27,7 +27,7 @@ const Product = () => {
                     <h1 className='text-4xl font-semibold'>Browse Our Products</h1>
                     <p className='text-sm text-gray-600'>the majority have suffered alteration in some form, by injected humour, or randomised <br />words which don't look even slightly believable. </p>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5'>
+                <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5'>
                     {
                         products.map(product => <ProductCart key={product._id} product={product} />)
                     }

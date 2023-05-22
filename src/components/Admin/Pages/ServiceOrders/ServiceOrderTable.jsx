@@ -5,7 +5,7 @@ const ServiceOrderTable = ({ service }) => {
     const [isConfirm,setIsConfirm] = useState(status)
     const handleConfirmOrder = id=>{
     
-        fetch(`http://localhost:5000/allServieOrder/${id}`,{
+        fetch(`https://car-doctor-server-side-beta.vercel.app/allServieOrder/${id}`,{
             method:"PUT",
             headers:{'content-type':'application/json'},
             body:JSON.stringify({status:true})
